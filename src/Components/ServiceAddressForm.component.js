@@ -1,7 +1,7 @@
 import React from 'react';
 import MapContainer from './MapContainer.component';
 import  BillingAddressForm  from './BillingAddressForm.component';
-import { Card } from '@material-ui/core';
+import { Card, Button } from '@material-ui/core';
 import { withStyles} from '@material-ui/core/styles';
 import ThankYouPage from './ThankYouPage.component';
 
@@ -95,7 +95,7 @@ class ServiceAddressForm extends React.Component {
                                       <input type="text"  required name="state" placeholder="State*" value={this.state.state} onChange={this.handleChange} />
                                       <input type="text"  required name="zip" placeholder="Zip*" value={this.state.zip} onChange={this.handleChange} />
                                       <input type="text"  name="notes" placeholder="Notes" value={this.state.notes} onChange={this.handleChange} />
-                                      <button onClick={this.nextView}>Next</button>
+                                      <Button variant="contained" onClick={this.nextView}>Next</Button>
                                     </div>  
                              </label>
                     </form>
@@ -116,7 +116,7 @@ class ServiceAddressForm extends React.Component {
                 <ThankYouPage/>
             )
 
-        //     default: <ServiceAddressForm/>
+             default: <ServiceAddressForm/>
         }
 
       

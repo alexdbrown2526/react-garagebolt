@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card} from '@material-ui/core'
+import { Card, Button} from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -21,12 +21,12 @@ const styles = theme => ({
 
  class BillingAddressForm extends React.Component {
     state = {
-        firstName: '',
-        lastName:  '',
-        address:   '',
-        city:      '',
-        state:     '',
-        zip:       ''
+        firstNameBilling: '',
+        lastNameBilling:  '',
+        addressBilling:   '',
+        cityBilling:      '',
+        stateBilling:     '',
+        zipBilling:       ''
     }
 
     back = (event) => {
@@ -34,7 +34,9 @@ const styles = theme => ({
         this.props.previousView();
     }
 
-    continue = (event) => {
+
+
+    handleSubmit = (event) => {
         event.preventDefault();
         this.props.nextView();
         console.log(this.state);
@@ -44,24 +46,25 @@ const styles = theme => ({
         let nam = event.target.name;
         let val = event.target.value;
         this.setState({[nam]: val})
-    } 
+    }   
 
     render(){
         const {classes} = this.props;
         return(
             <Card className={classes.card}>
                 <h1>Billing Address</h1>
-                  <form onSubmit={this.handleSubmit}>
+                  <form>
                       <label>
                         <h2 className="secondHeading">Information</h2>
                             <div className="information">
-                                <input type="text" className="information-item" required name="firstName" placeholder="First Name*" value={this.state.firstName} onChange={this.handleChange} />
-                                <input type="text" className="information-item"required name="lastName" placeholder="Last Name*" value={this.state.lastName}  onChange={this.handleChange} />
-                                <input type="text"  required name="address" placeholder="Address*" value={this.state.address} onChange={this.handleChange} />
-                                <input type="text"  required name="city" placeholder="City*" value={this.state.city} onChange={this.handleChange} />
-                                <input type="text"  required name="state" placeholder="State*" value={this.state.state} onChange={this.handleChange} />
-                                <input type="text"  required name="zip" placeholder="Zip*" value={this.state.zip} onChange={this.handleChange} />
-                                    <button onClick={this.continue}>Submit</button>
+                                <input type="text" className="information-item" required name="firstName" placeholder="First Name*" value={this.state.firstNameBilling} onChange={this.handleChange} />
+                                <input type="text" className="information-item"required name="lastName" placeholder="Last Name*" value={this.state.lastNameBilling}  onChange={this.handleChange} />
+                                <input type="text"  required name="address" placeholder="Address*" value={this.state.addressBilling} onChange={this.handleChange} />
+                                <input type="text"  required name="city" placeholder="City*" value={this.state.cityBilling} onChange={this.handleChange} />
+                                <input type="text"  required name="state" placeholder="State*" value={this.state.stateBilling} onChange={this.handleChange} />
+                                <input type="text"  required name="zip" placeholder="Zip*" value={this.state.zipBilling} onChange={this.handleChange} />
+                                <p>Is your service address also your billing address?</p>
+                                     <Button variant="contained" onClick={this.handleSubmit}>Submit</Button>
                             </div>
                         </label>
                     </form>  
