@@ -1,9 +1,9 @@
 import React from 'react';
 import MapContainer from './MapContainer.component';
 import  BillingAddressForm  from './BillingAddressForm.component';
-import { FormControl, Card } from '@material-ui/core';
+import { Card } from '@material-ui/core';
 import { withStyles} from '@material-ui/core/styles';
-import {Header, header} from './Header.component';
+import ThankYouPage from './ThankYouPage.component';
 
 
 const styles = theme => ({
@@ -50,6 +50,7 @@ class ServiceAddressForm extends React.Component {
         this.setState({
             view: view-1
         });
+        console.log(this.state);
     }
 
     handleChange = (event) => {
@@ -69,14 +70,14 @@ class ServiceAddressForm extends React.Component {
     render() {
         const {classes} = this.props;
         const { view } = this.state;
-        const { firstName, lastName, phoneNumber, email, address, city, state, zip, notes} = this.state
-        const values = { firstName, lastName, phoneNumber, email, address, city, state, zip, notes} 
+        //const { firstName, lastName, phoneNumber, email, address, city, state, zip, notes} = this.state
+        //const values = { firstName, lastName, phoneNumber, email, address, city, state, zip, notes} 
 
-        switch(view) {
-            
+        switch(view) { 
             case 1: return (
                 <Card className={classes.card}>
-                  <form  onSubmit={this.handleSubmit}>
+                    <h1>Service Address</h1>
+                    <form  onSubmit={this.handleSubmit}>
                       <label>
                         <h2 className="secondHeading">Information</h2>
                             <div className="information">
@@ -86,22 +87,18 @@ class ServiceAddressForm extends React.Component {
                                 <input type="email" className="information-item" required name="email" placeholder="Email*" value={this.state.email}  onChange={this.handleChange} />
                             </div>
                         </label>
-        
-      
-                <label>
-                    <h2 className="secondHeading">Address</h2>
-                    <div className="address"> 
-      
-                <input type="text"  required name="address" placeholder="Address*" value={this.state.address} onChange={this.handleChange} />
-                <input type="text"  required name="city" placeholder="City*" value={this.state.city} onChange={this.handleChange} />
-                <input type="text"  required name="state" placeholder="State*" value={this.state.state} onChange={this.handleChange} />
-                <input type="text"  required name="zip" placeholder="Zip*" value={this.state.zip} onChange={this.handleChange} />
-                <input type="text"  name="notes" placeholder="Notes" value={this.state.notes} onChange={this.handleChange} />
-                <button onClick={this.nextView}>Next</button>
-                </div>  
-      
-                </label>
-              </form>
+                            <label>
+                                <h2 className="secondHeading">Address</h2>
+                                    <div className="address"> 
+                                      <input type="text"  required name="address" placeholder="Address*" value={this.state.address} onChange={this.handleChange} />
+                                      <input type="text"  required name="city" placeholder="City*" value={this.state.city} onChange={this.handleChange} />
+                                      <input type="text"  required name="state" placeholder="State*" value={this.state.state} onChange={this.handleChange} />
+                                      <input type="text"  required name="zip" placeholder="Zip*" value={this.state.zip} onChange={this.handleChange} />
+                                      <input type="text"  name="notes" placeholder="Notes" value={this.state.notes} onChange={this.handleChange} />
+                                      <button onClick={this.nextView}>Next</button>
+                                    </div>  
+                             </label>
+                    </form>
               </Card>
               
             )
@@ -112,8 +109,14 @@ class ServiceAddressForm extends React.Component {
             );
             case 3: return (
                 <BillingAddressForm
+                nextView={this.nextView}
                 previousView={this.previousView}/>
             );
+            case 4: return (
+                <ThankYouPage/>
+            )
+
+        //     default: <ServiceAddressForm/>
         }
 
       

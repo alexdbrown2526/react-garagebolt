@@ -23,24 +23,21 @@ export class MapContainer extends Component {
   render() {
     return (
       <div>
-              <h1>hello</h1>
+              <h1>Map</h1>
               <button onClick={this.continue}>next</button>
               <button onClick={this.back}>back</button>
-
-
-
-      <Map
-        google={this.props.google}
-        zoom={10}
-        style={mapStyles}
-        initialCenter={
+        <Map
+          google={this.props.google}
+          zoom={10}
+          style={mapStyles}
+          initialCenter={
           {
             lat: 44.9778,
             lng: -93.2650
         
           }
         }
-      />
+        />
       </div>
     );
   }
