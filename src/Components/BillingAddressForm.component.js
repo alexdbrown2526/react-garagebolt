@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button} from '@material-ui/core'
+import { Card, Button, Checkbox} from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
@@ -20,6 +20,7 @@ const styles = theme => ({
 
 
  class BillingAddressForm extends React.Component {
+     
     state = {
         firstNameBilling: '',
         lastNameBilling:  '',
@@ -27,14 +28,13 @@ const styles = theme => ({
         cityBilling:      '',
         stateBilling:     '',
         zipBilling:       ''
-    }
+    };
+
 
     back = (event) => {
         event.preventDefault();
         this.props.previousView();
     }
-
-
 
     handleSubmit = (event) => {
         event.preventDefault();
@@ -43,10 +43,12 @@ const styles = theme => ({
     }
 
     handleChange = (event) => {
-        let nam = event.target.name;
-        let val = event.target.value;
-        this.setState({[nam]: val})
-    }   
+        let name = event.target.name;
+        let value = event.target.value;
+        this.setState({[name]: value})
+    }  
+     
+
 
     render(){
         const {classes} = this.props;
@@ -57,13 +59,13 @@ const styles = theme => ({
                       <label>
                         <h2 className="secondHeading">Information</h2>
                             <div className="information">
-                                <input type="text" className="information-item" required name="firstName" placeholder="First Name*" value={this.state.firstNameBilling} onChange={this.handleChange} />
-                                <input type="text" className="information-item"required name="lastName" placeholder="Last Name*" value={this.state.lastNameBilling}  onChange={this.handleChange} />
-                                <input type="text"  required name="address" placeholder="Address*" value={this.state.addressBilling} onChange={this.handleChange} />
-                                <input type="text"  required name="city" placeholder="City*" value={this.state.cityBilling} onChange={this.handleChange} />
-                                <input type="text"  required name="state" placeholder="State*" value={this.state.stateBilling} onChange={this.handleChange} />
-                                <input type="text"  required name="zip" placeholder="Zip*" value={this.state.zipBilling} onChange={this.handleChange} />
-                                <p>Is your service address also your billing address?</p>
+                                <input type="text" className="information-item" required name="firstNameBilling" placeholder="First Name*" value={this.state.firstNameBilling} onChange={this.handleChange} />
+                                <input type="text" className="information-item"required name="lastNameBilling" placeholder="Last Name*" value={this.state.lastNameBilling}  onChange={this.handleChange} />
+                                <input type="text"  required name="addressBilling" placeholder="Address*" value={this.state.addressBilling} onChange={this.handleChange} />
+                                <input type="text"  required name="cityBilling" placeholder="City*" value={this.state.cityBilling} onChange={this.handleChange} />
+                                <input type="text"  required name="stateBilling" placeholder="State*" value={this.state.stateBilling} onChange={this.handleChange} />
+                                <input type="number"  required name="zipBilling" placeholder="Zip*" value={this.state.zipBilling} onChange={this.handleChange} />
+                                <p>Is your service address also your billing address?</p> <Checkbox labelplace="true" label= "Yes"/>
                                      <Button variant="contained" onClick={this.handleSubmit}>Submit</Button>
                             </div>
                         </label>

@@ -4,7 +4,7 @@ import React from 'react';
 export default function ThankYouPage () {
     return(
         <div>
-            Thank you
+            Thank you        
         </div>
     )
     

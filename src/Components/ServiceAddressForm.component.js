@@ -54,9 +54,9 @@ class ServiceAddressForm extends React.Component {
     }
 
     handleChange = (event) => {
-        let nam = event.target.name;
-        let val = event.target.value;
-        this.setState({[nam]: val})
+        let name = event.target.name;
+        let value = event.target.value;
+        this.setState({[name]: value})
     }
   
     handleSubmit = (event) => {
@@ -70,9 +70,7 @@ class ServiceAddressForm extends React.Component {
     render() {
         const {classes} = this.props;
         const { view } = this.state;
-        //const { firstName, lastName, phoneNumber, email, address, city, state, zip, notes} = this.state
-        //const values = { firstName, lastName, phoneNumber, email, address, city, state, zip, notes} 
-
+        
         switch(view) { 
             case 1: return (
                 <Card className={classes.card}>
