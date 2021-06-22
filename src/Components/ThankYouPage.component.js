@@ -1,11 +1,18 @@
 import React from 'react';
 
+class ThankYouPage extends React.Component {
+    constructor(props){
+        super(props);
+    }
 
-export default function ThankYouPage () {
-    return(
+    render(){
+        return(
         <div>
-            Thank you        
+            Service Address:
+            {JSON.stringify(this.props.serviceValue)}
         </div>
     )
-    
+    }
 }
+
+export default ThankYouPage;

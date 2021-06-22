@@ -23,19 +23,21 @@ const styles = theme => ({
 
 
 class ServiceAddressForm extends React.Component {
-        state = {
-                    view: 1,
-                    firstName:   '',
-                    lastName:    '',
-                    phoneNumber: '',
-                    email:       '',
-                    address:     '',
-                    city:        '',
-                    state:       '',
-                    zip:         '',
-                    notes:       ''
-                };
-    
+    constructor(props){
+        super(props);
+        this.state = {
+            view: 1,
+            firstName:   '',
+            lastName:    '',
+            phoneNumber: '',
+            email:       '',
+            address:     '',
+            city:        '',
+            state:       '',
+            zip:         '',
+            notes:       ''
+        };
+    }
   
     nextView = () => {
         const { view } = this.state;
@@ -70,7 +72,7 @@ class ServiceAddressForm extends React.Component {
     render() {
         const {classes} = this.props;
         const { view } = this.state;
-        
+
         switch(view) { 
             case 1: return (
                 <Card className={classes.card}>
@@ -111,7 +113,7 @@ class ServiceAddressForm extends React.Component {
                 previousView={this.previousView}/>
             );
             case 4: return (
-                <ThankYouPage/>
+                <ThankYouPage serviceValue = {this.state}/>
             )
 
              default: <ServiceAddressForm/>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Button, Checkbox} from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles';
+import ThankYouPage from './ThankYouPage.component';
 
 const styles = theme => ({
     card: {
@@ -20,16 +21,18 @@ const styles = theme => ({
 
 
  class BillingAddressForm extends React.Component {
-     
-    state = {
-        firstNameBilling: '',
-        lastNameBilling:  '',
-        addressBilling:   '',
-        cityBilling:      '',
-        stateBilling:     '',
-        zipBilling:       ''
-    };
+     constructor(props){
+         super(props);
+         this.state = {
+            firstNameBilling: '',
+            lastNameBilling:  '',
+            addressBilling:   '',
+            cityBilling:      '',
+            stateBilling:     '',
+            zipBilling:       ''
+        };
 
+     }
 
     back = (event) => {
         event.preventDefault();
@@ -48,13 +51,12 @@ const styles = theme => ({
         this.setState({[name]: value})
     }  
      
-
-
     render(){
         const {classes} = this.props;
         return(
             <Card className={classes.card}>
                 <h1>Billing Address</h1>
+                <ThankYouPage billingValue = {this.state}/>
                   <form>
                       <label>
                         <h2 className="secondHeading">Information</h2>
@@ -65,8 +67,7 @@ const styles = theme => ({
                                 <input type="text"  required name="cityBilling" placeholder="City*" value={this.state.cityBilling} onChange={this.handleChange} />
                                 <input type="text"  required name="stateBilling" placeholder="State*" value={this.state.stateBilling} onChange={this.handleChange} />
                                 <input type="number"  required name="zipBilling" placeholder="Zip*" value={this.state.zipBilling} onChange={this.handleChange} />
-                                <p>Is your service address also your billing address?</p> <Checkbox labelplace="true" label= "Yes"/>
-                                     <Button variant="contained" onClick={this.handleSubmit}>Submit</Button>
+                                <Button variant="contained" onClick={this.handleSubmit}>Submit</Button>
                             </div>
                         </label>
                     </form>  
